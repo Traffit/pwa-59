@@ -332,51 +332,52 @@
     });
 
   </script>
-
-  <!-- ONESIGNAL -->
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.es6.js?v=160201" defer=""></script>
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer=""></script>
+    <!-- ONESIGNAL -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.es6.js?v=160201" defer=""></script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer=""></script>
+    
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "c0b9fee0-49ea-4e46-bb38-2e646e2f0825",
+          safari_web_id: "web.onesignal.auto.59c3dafd-0ede-48fd-b632-a1606d17d410",
+          notifyButton: {
+            enable: false,
   
-  <script>
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal) {
-      await OneSignal.init({
-        appId: "b595b372-c522-4966-8cbf-28a08b5f624b",
-        safari_web_id: "web.onesignal.auto.5e2915a8-1095-4900-b2af-7b25bf2970dd",
-        notifyButton: {
-          enable: false,
-
-        },
-        promptOptions: {
-          slidedown: {
-            prompts: [{
-                type: "push",
-                autoPrompt: true,
-                text: {
-                  actionMessage: "We'd like to show you notifications for the latest news and updates.",
-                  acceptButton: "Allow",
-                  cancelButton: "Cancel",
-                },
-                delay: {
-                  pageViews: 1,
-                  timeDelay: 1
-                },
-              }]
+          },
+          promptOptions: {
+            slidedown: {
+              prompts: [{
+                  type: "push",
+                  autoPrompt: true,
+                  text: {
+                    actionMessage: "We'd like to show you notifications for the latest news and updates.",
+                    acceptButton: "Allow",
+                    cancelButton: "Cancel",
+                  },
+                  delay: {
+                    pageViews: 1,
+                    timeDelay: 1
+                  },
+                }]
+            }
           }
-        }
+        });
       });
-    });
-    setTimeout(() => {
-      document.getElementById('onesignal-slidedown-allow-button').click()
-    }, 3000);
-    </script>
+      setTimeout(() => {
+        document.getElementById('onesignal-slidedown-allow-button').click()
+      }, 3000);
+      </script>
+  
+      <style>
+        #onesignal-slidedown-dialog {
+          opacity: 0;
+        }
+      </style>
+    <!-- ONESIGNAL END -->
 
-    <style>
-      #onesignal-slidedown-dialog {
-        opacity: 0;
-      }
-    </style>
-  <!-- ONESIGNAL END -->
+  
   <!-- pwa + ios -->
   <script>
 
